@@ -20,8 +20,6 @@ let expenses1 = prompt("Введите обязательную статью р�
   expenses2 = prompt("Введите обязательную статью расходов?"),
   expensesAmount2 = +prompt("Во сколько это обойдется?");
 
-console.log(addExpenses.toLowerCase().split(","));
-
 function getExpensesMonth(amount1, amount2) {
   return amount1 + amount2;
 }
@@ -35,16 +33,13 @@ function getTargetMonth(mission, accumulated) {
 }
 
 let expensesAmount = getExpensesMonth(expensesAmount1, expensesAmount2);
-//console.log("expensesAmount: ", expensesAmount);
 
 let accumulatedMonth = getAccumulatedMonth(money, expensesAmount);
 //console.log("Бюджет на месяц: " + accumulatedMonth + " рублей");
 
 let targetMonth = getTargetMonth(mission, accumulatedMonth);
-console.log("Вы достигните цели через " + targetMonth + " месяцев");
 
 let budgetDay = accumulatedMonth / 30;
-console.log("Доход за день " + Math.floor(budgetDay) + " рублей");
 
 let getStatusIncome = function () {
   if (budgetDay > 1200) {
@@ -57,4 +52,9 @@ let getStatusIncome = function () {
     return "Что-то пошло не так";
   }
 };
+
+console.log("Расходы за месяц: ", expensesAmount);
+console.log(addExpenses.toLowerCase().split(","));
+console.log("Вы достигните цели через " + targetMonth + " месяцев");
+console.log("Доход за день " + Math.floor(budgetDay) + " рублей");
 console.log(getStatusIncome());
