@@ -31,14 +31,7 @@ function getAccumulatedMonth(moneyMonth, getExpensesMonth) {
 function getTargetMonth(mission, accumulated) {
   return Math.ceil(mission / accumulated);
 }
-
 //let expensesAmount = getExpensesMonth(expensesAmount1, expensesAmount2);
-
-let accumulatedMonth = getAccumulatedMonth(
-  money,
-  getExpensesMonth(expensesAmount1, expensesAmount2)
-);
-//console.log("Бюджет на месяц: " + accumulatedMonth + " рублей");
 
 let targetMonth = getTargetMonth(
   mission,
