@@ -51,7 +51,9 @@ let getStatusIncome = function () {
   }
 };
 
-console.log("Доходы за месяц: " + accumulatedMonth);
+console.log(
+  "Расходы за месяц: " + getExpensesMonth(expensesAmount1, expensesAmount2)
+);
 console.log(addExpenses.toLowerCase().split(","));
 console.log(
   "Вы достигните цели через " +
