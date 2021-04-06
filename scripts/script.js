@@ -15,32 +15,35 @@ showTypeOf(money);
 showTypeOf(incom);
 showTypeOf(deposit);
 
-console.log("Длина строки '" + incom + "' = " + incom.length);
-
-money = prompt("Ваш месячный доход?");
-//console.log("~ money", money);
-
 let expenses1 = prompt("Введите обязательную статью расходов?"),
-  amount1 = +prompt("Во сколько это обойдется?"),
+  expensesAmount1 = +prompt("Во сколько это обойдется?"),
   expenses2 = prompt("Введите обязательную статью расходов?"),
-  amount2 = +prompt("Во сколько это обойдется?");
-
-console.log("Период равен " + period + " месяцев ");
-console.log("Цель заработать " + mission + " рублей");
+  expensesAmount2 = +prompt("Во сколько это обойдется?");
 
 console.log(addExpenses.toLowerCase().split(","));
 
-let expensesAmount = amount1 + amount2;
-console.log("expensesAmount: ", expensesAmount);
+function getExpensesMonth(amount1, amount2) {
+  return amount1 + amount2;
+}
 
-let budgetMonth = money - expensesAmount;
-console.log("Бюджет на месяц: " + budgetMonth + " рублей");
+function getAccumulatedMonth(moneyMonth, expenses) {
+  return moneyMonth - expenses;
+}
 
-let missionPeriod = Math.ceil(mission / budgetMonth);
-console.log("Вы достигните цели через " + missionPeriod + " месяцев");
+function getTargetMonth(mission, accumulated) {
+  return Math.ceil(mission / accumulated);
+}
 
-let budgetDay = budgetMonth / 30;
-//console.log("Доход за день " + budgetDay.toFixed(2) + " рублей");
+let expensesAmount = getExpensesMonth(expensesAmount1, expensesAmount2);
+//console.log("expensesAmount: ", expensesAmount);
+
+let accumulatedMonth = getAccumulatedMonth(money, expensesAmount);
+//console.log("Бюджет на месяц: " + accumulatedMonth + " рублей");
+
+let targetMonth = getTargetMonth(mission, accumulatedMonth);
+console.log("Вы достигните цели через " + targetMonth + " месяцев");
+
+let budgetDay = accumulatedMonth / 30;
 console.log("Доход за день " + Math.floor(budgetDay) + " рублей");
 
 let getStatusIncome = function () {
@@ -54,5 +57,4 @@ let getStatusIncome = function () {
     return "Что-то пошло не так";
   }
 };
-
 console.log(getStatusIncome());
