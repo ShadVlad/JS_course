@@ -1,57 +1,58 @@
 "use strict";
 
-let money = 50000;
-let incom = "Freelance";
-let addExpenses = "Интернет, такси, коммуналка";
-let deposit = true;
-let mission = 1000000;
-let period = 6;
+let money = +prompt("Ваш месячный доход?", 50000),
+  incom = "Freelance",
+  addExpenses = prompt("Интернет, такси, коммуналка"),
+  deposit = confirm("Есть ли у вас депозит в банке?"),
+  mission = 1000000,
+  period = 6;
 
-console.log("Переменная 'money' имеет тип '", typeof money, "'");
-console.log("Переменная 'incom' имеет тип '", typeof incom, "'");
-console.log("Переменная 'deposit' имеет тип '", typeof deposit, "'");
+let showTypeOf = function (data) {
+  console.log(data + " : " + typeof data);
+};
 
-console.log("Длина строки '" + addExpenses + "' = " + addExpenses.length);
+showTypeOf(money);
+showTypeOf(incom);
+showTypeOf(deposit);
+
+console.log("Длина строки '" + incom + "' = " + incom.length);
+
+money = prompt("Ваш месячный доход?");
+//console.log("~ money", money);
+
+let expenses1 = prompt("Введите обязательную статью расходов?"),
+  amount1 = +prompt("Во сколько это обойдется?"),
+  expenses2 = prompt("Введите обязательную статью расходов?"),
+  amount2 = +prompt("Во сколько это обойдется?");
 
 console.log("Период равен " + period + " месяцев ");
 console.log("Цель заработать " + mission + " рублей");
 
 console.log(addExpenses.toLowerCase().split(","));
 
-money = prompt("Ваш месячный доход?");
-//console.log("~ money", money);
+let expensesAmount = amount1 + amount2;
+console.log("expensesAmount: ", expensesAmount);
 
-addExpenses = prompt(
-  "Перечислите возможные расходы за рассчитываемый период через запятую"
-);
-//console.log("~ addExpenses", addExpenses);
+let budgetMonth = money - expensesAmount;
+console.log("Бюджет на месяц: " + budgetMonth + " рублей");
 
-deposit = confirm("Есть ли у вас депозит в банке?");
-//console.log("~ deposit", deposit);
-
-let expenses1 = prompt("Введите обязательную статью расходов?");
-let amount1 = prompt("Во сколько это обойдется?");
-let expenses2 = prompt("Введите обязательную статью расходов?");
-let amount2 = prompt("Во сколько это обойдется?");
-
-let budgetMonth = money - amount1 - amount2;
-console.log("~ Бюджет на месяц: " + budgetMonth + " рублей");
-
-let missionLong = mission / budgetMonth;
-console.log(
-  "~ Вы достигните цели через " + Math.ceil(missionLong) + " месяцев"
-);
+let missionPeriod = Math.ceil(mission / budgetMonth);
+console.log("Вы достигните цели через " + missionPeriod + " месяцев");
 
 let budgetDay = budgetMonth / 30;
 //console.log("Доход за день " + budgetDay.toFixed(2) + " рублей");
 console.log("Доход за день " + Math.floor(budgetDay) + " рублей");
 
-if (budgetDay > 1200) {
-  alert("У Вас высокий уровень дохода");
-} else if (budgetDay > 600) {
-  alert("У Вас средний уровень дохода");
-} else if (budgetDay >= 0) {
-  alert("К сожалению, у Вас уровень дохода ниже среднего");
-} else {
-  alert("Что-то пошло не так");
-}
+let getStatusIncome = function () {
+  if (budgetDay > 1200) {
+    return "У Вас высокий уровень дохода";
+  } else if (budgetDay > 600) {
+    return "У Вас средний уровень дохода";
+  } else if (budgetDay >= 0) {
+    return "К сожалению, у Вас уровень дохода ниже среднего";
+  } else {
+    return "Что-то пошло не так";
+  }
+};
+
+console.log(getStatusIncome());
