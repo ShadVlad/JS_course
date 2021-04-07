@@ -39,11 +39,10 @@ let getExpensesMonth = function () {
     let sumExpense;
     do {
       sumExpense = prompt("Во сколько это обойдется?");
-      while (!isNumber(sumExpense));
-      
+    } while (!isNumber(sumExpense));
+
     sum += parseFloat(sumExpense);
   }
-
   return sum;
 };
 
