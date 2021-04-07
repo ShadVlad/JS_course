@@ -29,11 +29,6 @@ showTypeOf(money);
 showTypeOf(incom);
 showTypeOf(deposit);
 
-// let expenses1 = prompt("Введите обязательную статью расходов?"),
-//   expensesAmount1 = +prompt("Во сколько это обойдется?"),
-//   expenses2 = prompt("Введите обязательную статью расходов?"),
-//   expensesAmount2 = +prompt("Во сколько это обойдется?");
-
 let expenses = [];
 
 let getExpensesMonth = function () {
