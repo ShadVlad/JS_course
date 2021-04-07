@@ -6,7 +6,10 @@ let isNumber = function (n) {
 
 let money,
   incom = "Freelance",
-  addExpenses = prompt("Интернет, такси, коммуналка"),
+  addExpenses = prompt(
+    "Перечислите возможные расходы за рассчитываемый период через запятую",
+    "Интернет, такси, коммуналка"
+  ),
   deposit = confirm("Есть ли у вас депозит в банке?"),
   mission = 1000000,
   period = 6;
