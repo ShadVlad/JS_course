@@ -36,8 +36,12 @@ let getExpensesMonth = function () {
 
   for (let i = 0; i < 2; i++) {
     expenses[i] = prompt("Введите обязательную статью расходов?", "Садик");
-
-    sum += +prompt("Во сколько это обойдется?");
+    let sumExpense;
+    do {
+      sumExpense = prompt("Во сколько это обойдется?");
+      console.log("sumExpense: ", sumExpense);
+    } while (!isNumber(sumExpense));
+    sum += parseFloat(sumExpense);
   }
 
   return sum;
