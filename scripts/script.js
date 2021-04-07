@@ -12,12 +12,8 @@ let money,
   period = 6;
 
 let start = function () {
-  money = prompt("Ваш месячный доход?", 50000);
-
-  //while (isNaN(money) || money === "" || money === null) {
-  while (!isNumber(money)) {
-    money = prompt("Ваш месячный доход?", 50000);
-  }
+  do money = prompt("Ваш месячный доход?", 50000);
+  while (!isNumber(money));
 };
 
 start();
