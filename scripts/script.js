@@ -85,7 +85,7 @@ console.log(
 );
 //console.log("Доход за день " + appData.budgetDay + " рублей");
 console.log(appData.getStatusIncome());
-console.log("Наша программа включает в себя данные: ");
+console.log("\nНаша программа включает в себя данные: ");
 for (let key in appData) {
-  console.log(`${key}: ${appData[key]}`);
+  console.log(`   ${key}: ${appData[key]}`);
 }
