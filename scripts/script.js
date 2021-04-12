@@ -1,6 +1,48 @@
 "use strict";
+const buttonStart = document.getElementById("start");
+console.log("buttonStart: ", buttonStart);
 
-let money,
+const buttonIncomeAdd = document.getElementsByTagName("button")[0];
+console.log("buttonsPlus: ", buttonIncomeAdd);
+const buttonExpensesAdd = document.getElementsByTagName("button")[1];
+console.log("buttonExpensesAdd: ", buttonExpensesAdd);
+
+const checkBoxDepo = document.querySelector("#deposit-check");
+console.log("checkBox: ", checkBoxDepo);
+
+const inputAdditionalIncome = document.querySelectorAll(
+  ".additional_income-item"
+);
+console.log("inputAdditionalIncome: ", inputAdditionalIncome[0]);
+console.log("inputAdditionalIncome: ", inputAdditionalIncome[1]);
+const values = document.getElementsByClassName("result-total");
+console.log("values: ", values);
+
+const salaryAmount = document.querySelector(".salary-amount");
+console.log("inputSalaryAmount: ", salaryAmount);
+
+const incomeTitle = document.querySelector(".income-title");
+console.log("incomeTitle: ", incomeTitle);
+
+const incomeAmount = document.querySelector(".income-amount");
+console.log("incomeAmount: ", incomeAmount);
+
+const expensesTitle = document.querySelector("input.expenses-title ");
+console.log("expensesTitle: ", expensesTitle);
+
+const expensesAmount = document.querySelector(".expenses-amount");
+console.log("expensesAmount: ", expensesAmount);
+
+const additionalExpenses = document.querySelector(".additional_expenses-item");
+console.log("additionalExpenses: ", additionalExpenses);
+
+const targetAmount = document.querySelector(".target-amount");
+console.log("targetAmount: ", targetAmount);
+
+const periodSelect = document.querySelector(".period-select");
+console.log("periodSelect: ", periodSelect);
+
+/* let money,
   start = function () {
     do money = prompt("Ваш месячный доход?", 50000);
     while (isNaN(money) || money === "" || money === null);
@@ -131,13 +173,13 @@ console.log("\nНаша программа включает в себя данн
 for (let key in appData) {
   console.log(`   ${key}: ${appData[key]}`);
 }
-
-console.log(
-  appData.addExpenses
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(", ")
-);
-
+ */
+// console.log(
+//   appData.addExpenses
+//     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+//     .join(", ")
+// );
+/* */
 // appData.getInfoDeposit();
 // console.log(
 //   appData.percentDeposit,
