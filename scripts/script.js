@@ -6,7 +6,7 @@ advElem.remove();
 
 const bodyElem = document.querySelector("body");
 console.log("bodyElem: ", bodyElem);
-bodyElem.style.backgroundImage = "url('/image/adv.jpg')";
+bodyElem.style.backgroundImage = "url('/image/you-dont-know-js.jpg')";
 
 const books = document.querySelectorAll(".book");
 console.log("books: ", books);
