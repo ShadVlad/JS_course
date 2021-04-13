@@ -1,47 +1,48 @@
 "use strict";
-const buttonStart = document.getElementById("start");
-console.log("buttonStart: ", buttonStart);
 
-const buttonIncomeAdd = document.getElementsByTagName("button")[0];
-console.log("buttonsPlus: ", buttonIncomeAdd);
-const buttonExpensesAdd = document.getElementsByTagName("button")[1];
-console.log("buttonExpensesAdd: ", buttonExpensesAdd);
+const advElem = document.querySelector(".adv");
+console.log("advElem: ", advElem);
+advElem.remove();
 
-const checkBoxDepo = document.querySelector("#deposit-check");
-console.log("checkBox: ", checkBoxDepo);
+const bodyElem = document.querySelector("body");
+console.log("bodyElem: ", bodyElem);
+bodyElem.style.backgroundImage = "url('/image/adv.jpg')";
 
-const inputAdditionalIncome = document.querySelectorAll(
-  ".additional_income-item"
+const books = document.querySelectorAll(".book");
+console.log("books: ", books);
+
+books[0].before(books[1]);
+books[3].before(books[4]);
+books[5].after(books[2]);
+books[4].childNodes[1].childNodes[1].innerText =
+  "Книга 3. this и Прототипы Объектов";
+
+books[0].childNodes[3].childNodes[21].before(
+  books[0].childNodes[3].childNodes[5]
 );
-console.log("inputAdditionalIncome: ", inputAdditionalIncome[0]);
-console.log("inputAdditionalIncome: ", inputAdditionalIncome[1]);
-const values = document.getElementsByClassName("result-total");
-console.log("values: ", values);
+books[0].childNodes[3].childNodes[6].after(
+  books[0].childNodes[3].childNodes[12]
+);
+books[0].childNodes[3].childNodes[9].before(
+  books[0].childNodes[3].childNodes[16]
+);
+books[5].childNodes[3].childNodes[5].before(
+  books[5].childNodes[3].childNodes[19]
+);
+books[5].childNodes[3].childNodes[14].before(
+  books[5].childNodes[3].childNodes[6]
+);
+books[5].childNodes[3].childNodes[16].after(
+  books[5].childNodes[3].childNodes[11]
+);
+console.log(books[2].childNodes[3].childNodes[15]);
 
-const salaryAmount = document.querySelector(".salary-amount");
-console.log("inputSalaryAmount: ", salaryAmount);
-
-const incomeTitle = document.querySelector(".income-title");
-console.log("incomeTitle: ", incomeTitle);
-
-const incomeAmount = document.querySelector(".income-amount");
-console.log("incomeAmount: ", incomeAmount);
-
-const expensesTitle = document.querySelector("input.expenses-title ");
-console.log("expensesTitle: ", expensesTitle);
-
-const expensesAmount = document.querySelector(".expenses-amount");
-console.log("expensesAmount: ", expensesAmount);
-
-const additionalExpenses = document.querySelector(".additional_expenses-item");
-console.log("additionalExpenses: ", additionalExpenses);
-
-const targetAmount = document.querySelector(".target-amount");
-console.log("targetAmount: ", targetAmount);
-
-const periodSelect = document.querySelector(".period-select");
-console.log("periodSelect: ", periodSelect);
-
+const newElem = document.createElement("li");
+newElem.textContent = "Глава 8: За пределами ES6";
+books[2].childNodes[3].childNodes[19].before(
+  books[2].childNodes[3].appendChild(newElem)
+);
+console.log("newElem: ", newElem);
 /* let money,
   start = function () {
     do money = prompt("Ваш месячный доход?", 50000);
