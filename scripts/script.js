@@ -31,7 +31,10 @@ let buttonStart = document.getElementById("start"),
   targetAmount = document.querySelector(".target-amount"),
   periodSelect = document.querySelector(".period-select"),
   periodAmount = document.querySelector(".period-amount"),
-  incomeItems = document.querySelectorAll(".income-items");
+  incomeItems = document.querySelectorAll(".income-items"),
+  nameInput = document.querySelectorAll("input[placeholder='Наименование']");
+console.log("name: ", nameInput[2].value);
+//console.log("name: ", nameInput[6].attributes[2].nodeValue);
 
 // let money;
 
@@ -115,6 +118,10 @@ let appData = {
       cloneExpensesItem,
       buttonExpensesAdd
     );
+    let title = cloneExpensesItem.querySelector(".expenses-title");
+    title.value = "";
+    let amount = cloneExpensesItem.querySelector(".expenses-amount");
+    amount.value = "";
     expensesItems = document.querySelectorAll(".expenses-items");
     if (expensesItems.length === 3) {
       buttonExpensesAdd.style.display = "none";
@@ -133,6 +140,11 @@ let appData = {
   addIncomeBlock: function () {
     let cloneIncomeItem = incomeItems[0].cloneNode(true);
     incomeItems[0].parentNode.insertBefore(cloneIncomeItem, buttonIncomeAdd);
+    console.log("cloneIncomeItem: ", cloneIncomeItem);
+    let title = cloneIncomeItem.querySelector(".income-title");
+    title.value = "";
+    let amount = cloneIncomeItem.querySelector(".income-amount");
+    amount.value = "";
     incomeItems = document.querySelectorAll(".income-items");
     if (incomeItems.length === 3) {
       buttonIncomeAdd.style.display = "none";
@@ -220,8 +232,19 @@ let appData = {
       console.log("buttonStart.disabled: ", buttonStart.disabled);
     } else buttonStart.disabled = false;
   },
+  readInput: function (i) {
+    //console.log("i: ", i);
+    i.value = i.value.replace(/^[А-Яа-яЁё\s]+$/, "");
+  },
 };
+
 buttonStart.disabled = true;
+
+nameInput.forEach((item) => {
+  //console.log("item: ", item);
+  item.addEventListener("input", appData.readInput(item));
+});
+
 salaryAmount.addEventListener("input", appData.getInputSalary);
 buttonStart.addEventListener("click", appData.start);
 buttonExpensesAdd.addEventListener("click", appData.addExpensesBlock);
