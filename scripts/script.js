@@ -35,14 +35,6 @@ let buttonStart = document.getElementById("start"),
   incomeItems = document.querySelectorAll(".income-items"),
   nameInput = document.querySelectorAll("input[placeholder='Наименование']"),
   summInput = document.querySelectorAll("input[placeholder='Сумма']");
-//  console.log("name: ", nameInput[1].value);
-//console.log("name: ", nameInput[6].attributes[2].nodeValue);
-
-// let money;
-
-// let isNumber = function (n) {
-//   return !isNaN(parseFloat(n)) && isFinite(n);
-// };
 
 let appData = {
   budget: 0,
@@ -317,18 +309,13 @@ let appData = {
 };
 
 buttonStart.disabled = true;
-// let nameInputs = nameInput;
-// let summInputs = summInput;
-//console.log("summInput: ", summInput);
 nameInput.forEach((item) => {
-  //console.log("item: ", item);
   item.addEventListener("keyup", appData.readInputName);
 });
 summInput.forEach((item) => {
   //console.log("item: ", item);
   item.addEventListener("keyup", appData.readInputSumm);
 });
-//appData.start.apply(appData);
 salaryAmount.addEventListener("input", appData.getInputSalary);
 buttonStart.addEventListener("click", appData.start.bind(appData));
 buttonExpensesAdd.addEventListener("click", appData.addExpensesBlock);
