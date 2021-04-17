@@ -258,10 +258,6 @@ let nameInputs = nameInput;
 let summInputs = summInput;
 console.log("summInputs: ", summInputs);
 nameInputs.forEach((item) => {
-  if (nameInput !== nameInputs) {
-    break;
-  }
-
   //console.log("item: ", item);
   item.addEventListener("keyup", appData.readInputName);
 });
