@@ -318,20 +318,24 @@ AppData.prototype.readInputSumm = function (event) {
   console.log("summInput: ", event.target.value);
 };
 
-const appData = new AppData();
-console.log("appData: ", appData);
+AppData.prototype.eventListeners = function () {
+  buttonStart.disabled = true;
+  nameInput.forEach((item) => {
+    item.addEventListener("keyup", appData.readInputName);
+  });
+  summInput.forEach((item) => {
+    //console.log("item: ", item);
+    item.addEventListener("keyup", appData.readInputSumm);
+  });
+  salaryAmount.addEventListener("input", this.check);
+  buttonStart.addEventListener("click", appData.start.bind(appData));
+  buttonExpensesAdd.addEventListener("click", appData.addExpensesBlock);
+  buttonIncomeAdd.addEventListener("click", appData.addIncomeBlock);
+  periodSelect.addEventListener("input", appData.changePeriodValue);
+  buttonCancel.addEventListener("click", appData.reset.bind(appData));
+};
 
-buttonStart.disabled = true;
-nameInput.forEach((item) => {
-  item.addEventListener("keyup", appData.readInputName);
-});
-summInput.forEach((item) => {
-  //console.log("item: ", item);
-  item.addEventListener("keyup", appData.readInputSumm);
-});
-salaryAmount.addEventListener("input", appData.check);
-buttonStart.addEventListener("click", appData.start.bind(appData));
-buttonExpensesAdd.addEventListener("click", appData.addExpensesBlock);
-buttonIncomeAdd.addEventListener("click", appData.addIncomeBlock);
-periodSelect.addEventListener("input", appData.changePeriodValue);
-buttonCancel.addEventListener("click", appData.reset.bind(appData));
+const appData = new AppData();
+appData.eventListeners();
+
+console.log("appData: ", appData);
