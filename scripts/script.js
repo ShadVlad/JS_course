@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnPlus = document.getElementsByTagName("button"),
     buttonIncomeAdd = btnPlus[0],
     buttonExpensesAdd = btnPlus[1],
-    depositCheck = document.querySelector("#deposit-check"),
+    depositCheck = document.getElementById("deposit-check"),
     additionalIncomeItem = document.querySelectorAll(".additional_income-item"),
     budgetDayValue = document.getElementsByClassName("budget_day-value")[0],
     budgetMonthValue = document.getElementsByClassName("budget_month-value")[0],
@@ -35,7 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ),
     targetAmount = document.querySelector(".target-amount"),
     periodSelect = document.querySelector(".period-select"),
-    periodAmount = document.querySelector(".period-amount");
+    periodAmount = document.querySelector(".period-amount"),
+    depositBank = document.querySelector(".deposit-bank"),
+    depositAmount = document.querySelector(".deposit-amount"),
+    depositPercent = document.querySelector(".deposit-percent");
 
   let expensesItems = document.querySelectorAll(".expenses-items"),
     incomeItems = document.querySelectorAll(".income-items"),
@@ -204,28 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // getAddExpenses() {
-    //   const _this = this;
-    //   _this.addExpenses = [];
-    //   let addExpenses = additionalExpensesItem.value.split(",");
-    //   addExpenses.forEach((item) => {
-    //     item = item.trim();
-    //     if (item !== "") {
-    //       item = item.charAt(0).toUpperCase() + item.substring(1).toLowerCase();
-    //       _this.addExpenses.push(item);
-    //     }
-    //   });
-    // }
-    // getAddIncome() {
-    //   const _this = this;
-    //   _this.addIncome = [];
-    //   additionalIncomeItem.forEach((item) => {
-    //     let itemValue = item.value.trim();
-    //     if (itemValue !== "") {
-    //       _this.addIncome.push(itemValue);
-    //     }
-    //   });
-    // }
     getAddExpInc() {
       const _this = this;
       _this.addExpenses = [];
@@ -321,16 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
       periodSelect.removeAttribute("disabled");
       depositCheck.checked = false;
     }
-    // asking() {
-    //   let addExpenses = prompt(
-    //     "Перечислите возможные расходы за рассчитываемый период через запятую",
-    //     "Интернет, такси, коммуналка"
-    //   );
-    //   appData.addExpenses = addExpenses.toLowerCase().split(", ");
-    //   appData.deposit = confirm("Есть ли у вас депозит в банке?");
-    //   appData.expensesMonth = appData.getExpensesMonth();
-    //   appData.getBudget();
-    // }
+
     getInfoDeposit() {
       if (appData.deposit) {
         let percentDeposit, moneyDeposit;
@@ -366,31 +338,43 @@ document.addEventListener("DOMContentLoaded", () => {
       event.target.value = event.target.value.replace(/[^0-9]/, "");
       //console.log("summInput: ", event.target.value);
     };
+    depositHandler() {
+      if (depositCheck.checked) {
+        depositBank.style.display = "inline-block";
+        depositAmount.style.display = "inline-block";
+      } else {
+        depositBank.style.display = "none";
+        depositAmount.style.display = "none";
+        depositBank.value = "";
+        depositAmount.value = "";
+      }
+    }
     eventListeners() {
       buttonStart.disabled = true;
       nameInput.forEach((item) => {
         //console.log("item: ", item);
 
-        item.addEventListener("keyup", appData.readInputName);
+        item.addEventListener("keyup", this.readInputName);
       });
       summInput.forEach((item) => {
         //console.log("item: ", item);
-        item.addEventListener("keyup", appData.readInputSumm);
+        item.addEventListener("keyup", this.readInputSumm);
       });
       salaryAmount.addEventListener("input", this.check);
-      buttonStart.addEventListener("click", appData.start.bind(appData));
+      buttonStart.addEventListener("click", this.start.bind(this));
       // buttonExpensesAdd.addEventListener(
       //   "click",
       //   appData.addExpIncBlock("expenses")
       // );
-      buttonExpensesAdd.addEventListener("click", appData.addExpensesBlock);
+      buttonExpensesAdd.addEventListener("click", this.addExpensesBlock);
       // buttonIncomeAdd.addEventListener(
       //   "click",
       //   appData.addExpIncBlock("income")
       // );
-      buttonIncomeAdd.addEventListener("click", appData.addIncomeBlock);
-      periodSelect.addEventListener("input", appData.changePeriodValue);
-      buttonCancel.addEventListener("click", appData.reset.bind(appData));
+      buttonIncomeAdd.addEventListener("click", this.addIncomeBlock);
+      periodSelect.addEventListener("input", this.changePeriodValue);
+      buttonCancel.addEventListener("click", this.reset.bind(this));
+      depositCheck.addEventListener("change", this.depositHandler.bind(this));
     }
   }
 
