@@ -95,10 +95,9 @@ const updateDate = function () {
   if (hour >= 16 && hour < 23) {
     stringPreA = "Добрый вечер!";
   } else if (hour >= 10 && hour < 16) {
-    console.log("hour: ", hour);
     stringPreA = "Добрый день!";
     //console.log("stringPreA: ", stringPreA);
-  } else if (hour > 4 && hour <= 10) {
+  } else if (hour >= 4 && hour < 10) {
     stringPreA = "Доброе утро!";
   } else {
     stringPreA = "Доброй ночи!";
@@ -106,13 +105,14 @@ const updateDate = function () {
 
   let stringA = `Сегодня:  ${week[todayDay.getDay()]}`;
   let postfix = "AM";
+  let hourP = hour;
   if (hour > 12) {
     postfix = "PM";
-    hour = hour % 12;
+    hourP = hour % 12;
   }
   let stringB =
     "Текущее время: " +
-    withZero(hour) +
+    withZero(hourP) +
     ":" +
     withZero(minute) +
     ":" +
