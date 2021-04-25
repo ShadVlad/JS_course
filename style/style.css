@@ -1,0 +1,12 @@
+div {
+  font-size: 24px;
+}
+
+.today {
+  font-weight: 700;
+}
+
+.weekend {
+  color: red;
+  font-style: italic;
+}
